@@ -56,12 +56,11 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) -c $(SOURCES)
-	ar -crs $(NAME) $(OBJECTS)
-
-bonus:
-	$(CC) $(CFLAGS) -c $(BONUS_SRCS)
-	ar -crs $(NAME) $(BONUS_OBS)
+	$(CC) $(CFLAGS) -c $(SOURCES) $(BONUS_SRCS)
+	ar -crs $(NAME) $(OBJECTS) $(BONUS_OBS)
+# bonus:
+# 	$(CC) $(CFLAGS) -c $(BONUS_SRCS)
+# 	ar -crs $(NAME) $(BONUS_OBS)
 
 re: fclean all
 

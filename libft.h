@@ -6,13 +6,14 @@
 /*   By: anda-cun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:47:34 by anda-cun          #+#    #+#             */
-/*   Updated: 2023/04/26 14:26:47 by anda-cun         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:50:08 by anda-cun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdarg.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <string.h>
@@ -22,6 +23,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
+	struct s_list	*prev;
 }					t_list;
 
 ////////////PART1
@@ -70,14 +72,22 @@ void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 ///////////BONUS
 t_list				*ft_lstnew(void *content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
+void				ft_lstadd_front(t_list **lst, t_list *newnode);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
-void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstadd_back(t_list **lst, t_list *newnode);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+/////////PRINTF
+int					ft_printf(const char *str, ...);
+int					ft_putchar(char c);
+int					ft_putnbr(int nb);
+int					ft_putstr(char *str);
+int					ft_putunbr(long unsigned int n, unsigned int base, char fs);
+int					ft_ptr(long unsigned int n, unsigned int base, char fs);
 
 #endif
